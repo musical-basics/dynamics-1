@@ -8,3 +8,4 @@ export { auxFiles } from './aux-files';
 export { audioFeatures } from './audio-features';
 export { chapters } from './chapters';
 export { comments } from './comments';
+export { sponsorAudioTracks } from './sponsor-audio-tracks';
