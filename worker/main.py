@@ -5,6 +5,7 @@ FastAPI server for audio/video processing pipeline.
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from routes.jobs import router as jobs_router
 
 app = FastAPI(
     title="Dynamics.art DSP Worker",
@@ -20,7 +21,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(jobs_router)
+
 
 @app.get("/health")
 async def health_check():
     return {"status": "ok", "service": "dynamics-dsp-worker"}
+
