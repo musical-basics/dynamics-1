@@ -44,7 +44,7 @@ export async function GET(request: NextRequest, { params }: Props) {
         ORDER BY af2.feature_vector <=> af1.feature_vector
         LIMIT 10
       `);
-      recommendations = result.rows;
+      recommendations = result as Record<string, unknown>[];
     } catch {
       // Fallback: recent public releases
       recommendations = (await db.execute(sql`
@@ -67,7 +67,7 @@ export async function GET(request: NextRequest, { params }: Props) {
         WHERE r.visibility = 'public' AND r.id != ${releaseId}
         ORDER BY r.created_at DESC
         LIMIT 10
-      `)).rows;
+      `)) as Record<string, unknown>[];
     }
 
     return NextResponse.json({ recommendations });
