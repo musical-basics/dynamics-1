@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import MiniPlayer from "@/components/player/MiniPlayer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,7 +17,7 @@ export default function RootLayout({
     <html lang="en" className="dark h-full antialiased">
       <body className="min-h-full flex flex-col bg-background text-foreground">
         {children}
-        {/* MiniPlayer will be mounted here in Phase 5 */}
+        <MiniPlayer />
       </body>
     </html>
   );
