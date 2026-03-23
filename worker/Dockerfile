@@ -19,6 +19,7 @@ COPY . .
 RUN groupadd -r worker && useradd -r -g worker worker
 USER worker
 
-EXPOSE 8000
+ENV PORT=8000
+EXPOSE ${PORT}
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT}
