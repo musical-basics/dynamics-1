@@ -111,8 +111,8 @@ export default function UploadPage() {
       setError('Please select at least one file');
       return;
     }
-    if (!files.some((f) => f.type === 'audio')) {
-      setError('At least one audio file is required');
+    if (!files.some((f) => f.type === 'audio') && !files.some((f) => f.type === 'video')) {
+      setError('Please upload at least one audio or video file');
       return;
     }
 
